@@ -1,1 +1,42 @@
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS likes;
+DROP TABLE IF EXISTS comments;
+DROP TABLE IF EXISTS follows;
 
+-- CREATE TABLES
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT,
+  name TEXT,
+  location TEXT,
+  email TEXT
+);
+
+CREATE TABLE follows (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  follower_id INTEGER,
+  followed_id INTEGER
+);
+
+CREATE TABLE posts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  created_at DATETIME,
+  user_id INTEGER,
+  image_url TEXT
+);
+
+CREATE TABLE likes (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER,
+  post_id INTEGER,
+  created_at DATETIME
+);
+
+CREATE TABLE comments (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER,
+  post_id INTEGER,
+  created_at DATETIME,
+  body TEXT
+);
